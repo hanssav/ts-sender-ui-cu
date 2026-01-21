@@ -25,7 +25,6 @@ const InputField: React.FC<InputFieldProps> = ({
   large = false,
   onChange,
 
-  // Additional props
   error,
   helperText,
   icon,

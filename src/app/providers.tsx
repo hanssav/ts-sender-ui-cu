@@ -16,7 +16,7 @@ export function Providers(props: { children: React.ReactNode }) {
   }, []);
 
   if (!mounted) {
-    return <>{props.children}</>;
+    return null;
   }
 
   return (
