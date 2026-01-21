@@ -36,8 +36,8 @@ export default function AirdropForm() {
 
   const handleSubmit = async () => {
     const tSenderAddress = chainsToTSender[chainId]['tsender'];
-    console.log(tSenderAddress, 'tsender');
-    console.log(chainId);
+    // console.log(tSenderAddress, 'tsender');
+    // console.log(chainId);
 
     const approvedAmount = await getApprovedAmount(tSenderAddress);
 
