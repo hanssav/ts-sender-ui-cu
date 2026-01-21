@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import React from 'react';
 import { Providers } from './providers';
+import Header from '@/components/Header';
 
 export const metadata: Metadata = {
   title: 'TSender',
@@ -9,9 +10,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
-    <html lang='en'>
+    <html lang='en' className='dark'>
       <body>
-        <Providers>{props.children}</Providers>
+        <Providers>
+          <Header />
+
+          {props.children}
+        </Providers>
       </body>
     </html>
   );
