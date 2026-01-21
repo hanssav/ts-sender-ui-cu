@@ -13,11 +13,10 @@ interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   helperText?: string;
   icon?: React.ReactNode;
-  rows?: number; // For textarea when large is true
+  rows?: number;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
-  // Required props
   label,
   placeholder,
   value,
