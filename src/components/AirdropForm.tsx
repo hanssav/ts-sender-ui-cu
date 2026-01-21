@@ -3,8 +3,9 @@
 import InputField from '@/components/ui/InputField';
 import { useAccount, useChainId, useConfig } from 'wagmi';
 import { chainsToTSender, erc20Abi } from '@/constants';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { readContract } from '@wagmi/core';
+import { calculateTotal } from '@/utils';
 
 export default function AirdropForm() {
   const [tokenAddress, setTokenAddress] = useState('');
@@ -14,6 +15,8 @@ export default function AirdropForm() {
   const chainId = useChainId();
   const config = useConfig();
   const account = useAccount();
+
+  const total: number = React.useMemo(() => calculateTotal(amounts), [amounts]);
 
   async function getApprovedAmount(
     tSenderAddress: string | null
@@ -36,13 +39,9 @@ export default function AirdropForm() {
 
   const handleSubmit = async () => {
     const tSenderAddress = chainsToTSender[chainId]['tsender'];
-    // console.log(tSenderAddress, 'tsender');
-    // console.log(chainId);
-
     const approvedAmount = await getApprovedAmount(tSenderAddress);
-
-    console.log(approvedAmount);
   };
+
   return (
     <div className='min-h-screen p-4 max-w-4xl mx-auto'>
       <div className='flex justify-between items-center mb-8'>
